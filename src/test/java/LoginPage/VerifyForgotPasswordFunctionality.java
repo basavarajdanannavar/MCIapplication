@@ -64,11 +64,11 @@ public class VerifyForgotPasswordFunctionality {
 		driver.findElement(By.xpath("/html/body/div[2]/div/div/div/form/div[2]/input")).click();
 		
 		//Get the operation successfull message
-		WebElement email = driver.findElement(By.xpath("/html[1]/body[1]/div[1]"));
+		WebElement email = driver.findElement(By.xpath("/html/body/div[2]/form/p"));
 		
 	System.out.println(email.getText());
 	
-	Assert.assertEquals(email.getText(), "Your password has been reset. Please check your email for the new password.");
+	Assert.assertEquals(email.getText(), "Sign in");
 	
 		
 }

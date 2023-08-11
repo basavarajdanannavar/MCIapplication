@@ -3,13 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="LoginPage.VerifyForgotPasswordFunctionality">
+      <class name="Signup.InvalidmailIDetails">
         <methods>
+          <include name="FillupSignupform"/>
           <include name="setUp"/>
-          <include name="checkLoginLink"/>
-          <include name="checkSignupLink"/>
         </methods>
-      </class> <!-- LoginPage.VerifyForgotPasswordFunctionality -->
+      </class> <!-- Signup.InvalidmailIDetails -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
