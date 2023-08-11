@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Signup.InvalidmailIDetails">
+      <class name="Homepage.ValidCustomerDetails">
         <methods>
-          <include name="FillupSignupform"/>
           <include name="setUp"/>
+          <include name="InquiryEntry"/>
         </methods>
-      </class> <!-- Signup.InvalidmailIDetails -->
+      </class> <!-- Homepage.ValidCustomerDetails -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
