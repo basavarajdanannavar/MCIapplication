@@ -23,7 +23,7 @@ import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class ValidCustomerDetails {
+public class InvalidCustomerDetailsPendingApprovals {
 	public WebDriver driver;
 	public Workbook workbook;
 	public Sheet sheet;
@@ -40,8 +40,7 @@ public class ValidCustomerDetails {
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-	}
+}
 	
 	@Test(priority=0)
 	public void RememberMe() throws InterruptedException,IOException {
@@ -117,9 +116,6 @@ public class ValidCustomerDetails {
 		driver.findElement(By.xpath("//*[@id=\"kycSections\"]/div[1]/div[2]/input")).sendKeys("12345756382647");
 		//Enter the PAN details
 		driver.findElement(By.xpath("//*[@id=\"kycSections\"]/div[2]/div[2]/input")).sendKeys("EILPD9543N");
-	
-		
-		
 	}
 	        private static String getCellValueAsString(Cell cell) {
 		        if (cell == null) {
