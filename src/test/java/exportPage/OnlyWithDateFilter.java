@@ -1,7 +1,5 @@
-package Homepage;
+package exportPage;
 
-import java.awt.AWTException;
-import java.awt.Robot;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -23,7 +21,7 @@ import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class InvalidCustomerDetailsBad {
+public class OnlyWithDateFilter {
 	public WebDriver driver;
 	public Workbook workbook;
 	public Sheet sheet;
@@ -44,7 +42,7 @@ public class InvalidCustomerDetailsBad {
 	
 	@Test(priority=0)
 	public void RememberMe() throws InterruptedException,IOException {
-		 FileInputStream file = new FileInputStream(".//DataFiles//TestData.xlsx");
+		 FileInputStream file = new FileInputStream(".//DataFiles//Login.xlsx");
 	        Workbook workbook = WorkbookFactory.create(file);
 	        @SuppressWarnings("rawtypes")
 			org.apache.poi.ss.usermodel.Sheet sheet = workbook.getSheet("sheet1");
@@ -56,7 +54,8 @@ public class InvalidCustomerDetailsBad {
 	            String password = getCellValueAsString(row.getCell(1));
 	            
 	            
-	            driver.get("https://mci.technovative.in/login");
+	        driver.get("https://mci.technovative.in/");    
+	            
 
 	    		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
@@ -80,54 +79,32 @@ public class InvalidCustomerDetailsBad {
 }
 	
 	@Test(priority=1)
-	public void InquiryEntry() throws AWTException {
-		//Enter the fullname
-		driver.findElement(By.id("fullName")).sendKeys("Basu");
-		//Enter the Mobile No
-		driver.findElement(By.id("mobileNo")).sendKeys("843568436");
-     /*Enter the DOB
-		driver.findElement(By.id("dob")).click();
-		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.visibilityOfElementLocated((By.xpath("//*[@id=\"mat-datepicker-0\"]"))));
+	public void Export() {
 		
-		String aMonth = driver.findElement(By.id("mat-calendar-button-0")).getText();
+		//click on Export link
+		driver.findElement(By.cssSelector("[href='/export']")).click();
 		
-		while(!(aMonth.equals("JUL 2020"))) {
-			driver.findElement(By.xpath("//*[@id=\"mat-datepicker-0\"]/mat-calendar-header/div/div/button[2]")).click();
-			aMonth = driver.findElement(By.id("mat-calendar-button-0")).getText();
-		}
+		//select the date
+		driver.findElement(By.id("date_created")).sendKeys("08/22/2023");
 		
-		driver.findElement(By.xpath("//*[@id=\"mat-datepicker-0\"]/div/mat-month-view/table/tbody/tr[4]/td[2]/button/div[1]")).click();
-		
-		*/
-		driver.findElement(By.id("dob")).sendKeys("03/04/1990");
-		
-		Robot r=new Robot();
-		r.mouseWheel(1);
-		//Enter the address
-		driver.findElement(By.id("address")).sendKeys("843875hdsifcw");
-		//Select the state
-		driver.findElement(By.cssSelector("[value='Maharashtra']")).click();
-		//Enter the city
-		driver.findElement(By.id("city")).sendKeys("Hubli");
-		//Enter the pincode
-		driver.findElement(By.id("pincode")).sendKeys("346578");
-		//Enter the Adhar KYC
-		driver.findElement(By.xpath("//*[@id=\"kycSections\"]/div[1]/div[2]/input")).sendKeys("12345756382647");
-		//Enter the PAN details
-		driver.findElement(By.xpath("//*[@id=\"kycSections\"]/div[2]/div[2]/input")).sendKeys("EILPD9543N");
-	}
-	        private static String getCellValueAsString(Cell cell) {
-		        if (cell == null) {
-		            return "";
-		        }
+		//clcik on Export as CSV
+		driver.findElement(By.cssSelector("[onclick='exportCSV()']")).click();
 
-		        if (cell.getCellType() == CellType.STRING) {
-		            return cell.getStringCellValue();
-		        } else if (cell.getCellType() == CellType.NUMERIC) {
-		            return String.valueOf((int) cell.getNumericCellValue());
-		        } else {
-		            return "";
-		        }   
+	}
+	
+	
+	
+    private static String getCellValueAsString(Cell cell) {
+        if (cell == null) {
+            return "";
+        }
+
+        if (cell.getCellType() == CellType.STRING) {
+            return cell.getStringCellValue();
+        } else if (cell.getCellType() == CellType.NUMERIC) {
+            return String.valueOf((int) cell.getNumericCellValue());
+        } else {
+            return "";
+        }   
 }
 }

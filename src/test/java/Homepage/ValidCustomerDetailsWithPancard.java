@@ -128,7 +128,7 @@ public class ValidCustomerDetailsWithPancard {
 			driver.findElement(By.xpath("//*[@id=\"kycSections\"]/div[2]/div[2]/input")).sendKeys(Pan);
 			Thread.sleep(1000);
 
-			driver.findElement(By.cssSelector("[type='submit']")).submit();
+	//		driver.findElement(By.cssSelector("[type='submit']")).submit();
 			
 			Thread.sleep(500);
 			driver.findElement(By.xpath("//*[@id=\"navbarNavDropdown\"]/ul/li[2]/a")).click();

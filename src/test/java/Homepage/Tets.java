@@ -24,7 +24,7 @@ import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class ValidCustomerDetailsWithVoterID {
+public class Tets {
 	public WebDriver driver;
 	public Workbook workbook;
 	public Sheet sheet;
@@ -80,74 +80,59 @@ public class ValidCustomerDetailsWithVoterID {
 
 	@Test(priority = 1)
 	public void InquiryEntry() throws AWTException, EncryptedDocumentException, IOException, InterruptedException {
-		FileInputStream file = new FileInputStream(".//DataFiles//INFORM.xlsx");
-		Workbook workbook = WorkbookFactory.create(file);
-		@SuppressWarnings("rawtypes")
-		org.apache.poi.ss.usermodel.Sheet sheet = workbook.getSheet("sheet2");
+		
 
-		// Loop through the rows and perform the login test cases
-		for (int i = 1; i <= sheet.getLastRowNum(); i++) {
-			Row row = sheet.getRow(i);
-			String Fullname = getCellValueAsString(row.getCell(0));
-			String DOB = getCellValueAsString(row.getCell(1));
-			String  MobNO =getCellValueAsString(row.getCell(2));
-			String Address = getCellValueAsString(row.getCell(3));
-			String City = getCellValueAsString(row.getCell(4));
-			String Pincode = getCellValueAsString(row.getCell(5));
-			String Pan = getCellValueAsString(row.getCell(6));
-			String Aadhar = getCellValueAsString(row.getCell(7));
+
 			
 
 			// Enter the fullname
-			driver.findElement(By.id("fullName")).sendKeys(Fullname);
+			driver.findElement(By.id("fullName")).sendKeys("SHAHIN SAYYED");
 			Thread.sleep(1000);
 			// Enter the Mobile No
 			
-			driver.findElement(By.id("dob")).sendKeys(DOB);
+			driver.findElement(By.id("dob")).sendKeys("01.01.1975");
 			Thread.sleep(1000);
 			Robot r = new Robot();
 			r.mouseWheel(1);
-			driver.findElement(By.id("mobileNo")).sendKeys(MobNO);
+			driver.findElement(By.id("mobileNo")).sendKeys("7721008330");
 			Thread.sleep(1000);
 			// Enter the address
-			driver.findElement(By.id("address")).sendKeys(Address);
+			driver.findElement(By.id("address")).sendKeys("MAHDA COLONY SIRASWADU ROAD JALNA 431203");
 			Thread.sleep(1000);
 			// Select the state
 			driver.findElement(By.cssSelector("[value='Maharashtra']")).click();
 			Thread.sleep(1000);
 			// Enter the city
-			driver.findElement(By.id("city")).sendKeys(City);
+			driver.findElement(By.id("city")).sendKeys("JALNA");
 			Thread.sleep(1000);
 			// Enter the pincode
-			driver.findElement(By.id("pincode")).sendKeys(Pincode);
+			driver.findElement(By.id("pincode")).sendKeys("431203");
 			Thread.sleep(1000);
 			// Enter the Adhar KYC
-			driver.findElement(By.xpath("//*[@id=\"kycSections\"]/div[1]/div[2]/input")).sendKeys(Aadhar);
-			Thread.sleep(5000);
-			
-		driver.findElement(By.xpath("//*[@id=\"kycSections\"]/div[2]/div[1]/div/select/option[7]")).click();
+			driver.findElement(By.xpath("//*[@id=\"kycSections\"]/div[1]/div[2]/input")).sendKeys("547454776410");
+			Thread.sleep(1000);
 			// Enter the PAN details
-			driver.findElement(By.xpath("//*[@id=\"kycSections\"]/div[2]/div[2]/input")).sendKeys(Pan);
+			driver.findElement(By.xpath("//*[@id=\"kycSections\"]/div[2]/div[2]/input")).sendKeys("QEKPS1142M");
 			Thread.sleep(1000);
 
-			driver.findElement(By.cssSelector("[type='submit']")).submit();
+	//		driver.findElement(By.cssSelector("[type='submit']")).submit();
 			
 			Thread.sleep(500);
-			driver.findElement(By.xpath("//*[@id=\"navbarNavDropdown\"]/ul/li[2]/a")).click();
+		//	driver.findElement(By.xpath("//*[@id=\"navbarNavDropdown\"]/ul/li[2]/a")).click();
 		}
+	
+private static String getCellValueAsString(Cell cell) {
+	if (cell == null) {
+		return "";
 	}
 
-	private static String getCellValueAsString(Cell cell) {
-		if (cell == null) {
-			return "";
-		}
-
-		if (cell.getCellType() == CellType.STRING) {
-			return cell.getStringCellValue();
-		} else if (cell.getCellType() == CellType.NUMERIC) {
-			return String.valueOf((int) cell.getNumericCellValue());
-		} else {
-			return "";
-		}
+	if (cell.getCellType() == CellType.STRING) {
+		return cell.getStringCellValue();
+	} else if (cell.getCellType() == CellType.NUMERIC) {
+		return String.valueOf((int) cell.getNumericCellValue());
+	} else {
+		return "";
 	}
 }
+
+	}
