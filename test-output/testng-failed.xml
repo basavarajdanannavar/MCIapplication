@@ -3,12 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Homepage.ValidCustomerDetailsWithPancard">
+      <class name="CRMLoginTest.Login">
         <methods>
-          <include name="InquiryEntry"/>
-          <include name="setUp"/>
+          <include name="SetUp"/>
         </methods>
-      </class> <!-- Homepage.ValidCustomerDetailsWithPancard -->
+      </class> <!-- CRMLoginTest.Login -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
